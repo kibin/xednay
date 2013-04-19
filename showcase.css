@@ -71,6 +71,7 @@ body, ul, li, table, tr, td, h2 {
 	float: left;
 	background: #d0ed12;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .preview {
