@@ -122,7 +122,8 @@ function showcase() {
 		}
 
 		function imgAlign() {
-			$('.slides-item img').each(function() {
+			var $img = $('.slides-item img');
+			$img.each(function() {
 				if (this.width > $slide.width()) {
 					var i = $(this).parent().index();
 					$($slide[i]).addClass('h-align');
