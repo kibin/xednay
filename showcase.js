@@ -125,7 +125,6 @@ function showcase() {
 			
 			$img.on('load', function() {
 				var $this = $(this);
-				console.log($this.width());
 				$this.each(function() {
 					if ($(this).width() > $slide.width()) {
 						var i = $(this).parent().index();
