@@ -1,6 +1,4 @@
-$(function() {
-	showcase();
-});
+$(window).on('load', showcase); 
 
 function showcase() {
 	var show = $('.showcase');
@@ -13,7 +11,6 @@ function showcase() {
 			$back = $('.backbutton', $this),
 			$thumbsbutton = $('.thumbsbutton', $this),
 			$thumbnails = $('.thumbnails', $this),
-			$thumbitem = $('.thumbnails-item', $this),
 
 			id = 0,
 			thisslide = $($slide[id]),
@@ -23,6 +20,7 @@ function showcase() {
 		$next.leftClick(nextSlide);
 		$back.leftClick(prevSlide);
 		$thumbsbutton.leftClick(thumbs);
+		imgAlign();
 
 		function nextSlide() {
 			if (id < amount - 1) {
@@ -58,6 +56,14 @@ function showcase() {
 			$slides.add($back).add($next).add($thumbsbutton).hide();
 			thisslide.removeClass('showing');
 			$thumbnails.show();
+
+			var thumbid = new Array(amount);
+			for (var z = 0; z < amount; z++) {
+				if ($($slide[z]).hasClass('h-align')) {
+					thumbid.splice(z, 1, $($slide[z]).index());
+				}
+			}
+
 			if (!$thumbnails.html().length) {
 				for (var i = 0; i < amount; i++) {
 					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
@@ -65,8 +71,6 @@ function showcase() {
 						if ($('img', $slide[i]).length) {
 							$('img', $slide[i]).clone().appendTo($thumbs);
 						} else {
-							textfinder($($slide[i]));
-
 							function textfinder(a) {
 								if (a.find(':first-child').html() === undefined) {
 									var text = a.parent().text();
@@ -76,11 +80,21 @@ function showcase() {
 									textfinder(a.find(':first-child'));
 								}
 							}
+							textfinder($($slide[i]));
 						}
-					
 
 					$thumbs.each(function() {
-						var $this = $(this);
+						var $this = $(this),
+							index = $this.index();
+
+						if (thumbid[index]) {
+							$this.addClass('h-align');
+							var img = $this.find(':first-child'),
+								imgheight = img.height(),
+								thisheight = $this.height();
+
+							img.css({'margin-top': (thisheight - imgheight)/2})
+						}
 
 						$this.on('click', function() {
 							$thumbnails.hide();
@@ -105,6 +119,16 @@ function showcase() {
 					});
 				}
 			}
+		}
+
+		function imgAlign() {
+			$('.slides-item img').each(function() {
+				if (this.width > $slide.width()) {
+					var i = $(this).parent().index();
+					$($slide[i]).addClass('h-align');
+					$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
+				}
+			});
 		}
 	});
 }
