@@ -30,6 +30,12 @@ function showcase() {
 				id++;
 				thisslide = $($slide[id]);
 				thisslide.addClass('showing');
+				if (!$back.hasClass('hoverclass')) {
+					$back.addClass('hoverclass');
+				}
+			}
+			if (id == amount - 1) {
+				$next.removeClass('hoverclass');
 			}
 		}
 
@@ -39,6 +45,12 @@ function showcase() {
 				id--;
 				thisslide = $($slide[id]);
 				thisslide.addClass('showing');
+				if (!$next.hasClass('hoverclass')) {
+					$next.addClass('hoverclass');
+				}
+			}
+			if (id == 0) {
+				$back.removeClass('hoverclass');
 			}
 		}
 

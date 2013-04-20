@@ -25,11 +25,11 @@ body, ul, li, table, tr, td, h2 {
 	text-align: center;
 	height: 10%;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.3);
 	color: #fff;
 	font-size: 40px;
 	cursor: pointer;
-	opacity: 0.3;
+	opacity: 0.5;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -44,7 +44,7 @@ body, ul, li, table, tr, td, h2 {
 	right: 0;
 }
 
-.backbutton:hover, .nextbutton:hover, .thumbsbutton:hover {
+.hoverclass:hover, .thumbsbutton:hover {
 	opacity: 1;
 }
 
