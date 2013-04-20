@@ -60,12 +60,12 @@ function showcase() {
 			$thumbnails.show();
 			if (!$thumbnails.html().length) {
 				for (var i = 0; i < amount; i++) {
-					var	$thumbs = $('<li class="thumbnails-item">'+'</li>');
+					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
 						$thumbnails.append($thumbs);
-						if ($('img', $slide[i]).length == true) {
-							$($('img', $slide[i])[0]).clone().appendTo($thumbs);
+						if ($('img', $slide[i]).length) {
+							$('img', $slide[i]).clone().appendTo($thumbs);
 						} else {
-							textfinder($($($slide[i])[0]));
+							textfinder($($slide[i]));
 
 							function textfinder(a) {
 								if (a.find(':first-child').html() === undefined) {
