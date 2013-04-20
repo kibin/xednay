@@ -46,10 +46,10 @@ body, ul, li, table, tr, td, h2 {
 	height: 40px;
 	background: url(thumbs.gif);
 	position: absolute;
-	top: 30px;
-	right: 30px;
+	top: 40px;
+	right: 40px;
 	cursor: pointer;
-	opacity: 0.3;
+	opacity: 0.5;
 }
 
 .hoverclass:hover, 

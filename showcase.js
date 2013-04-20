@@ -88,6 +88,19 @@ function showcase() {
 							id = $this.index();
 							thisslide = $($slide[id]);
 							thisslide.addClass('showing');
+							if (thisslide.index() == amount-1) {
+								$next.removeClass('hoverclass');
+								if (!$back.hasClass('hoverclass')) {
+									$back.addClass('hoverclass');
+								}
+							} else if (thisslide.index() == 0) {
+								$back.removeClass('hoverclass');
+								if (!$next.hasClass('hoverclass')) {
+									$next.addClass('hoverclass');
+								}
+							} else {
+								$back.add($next).addClass('hoverclass');
+							}
 						});
 					});
 				}
