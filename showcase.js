@@ -1,4 +1,4 @@
-$(showcase); 
+$(window).on('load', showcase); 
 
 function showcase() {
 	var show = $('.showcase');
@@ -16,6 +16,7 @@ function showcase() {
 			thisslide = $($slide[id]),
 			amount = $slide.length;
 
+		thisslide.addClass('showing');
 		$next.leftClick(nextSlide);
 		$back.leftClick(prevSlide);
 		$thumbsbutton.leftClick(thumbs);
@@ -23,10 +24,10 @@ function showcase() {
 
 		function nextSlide() {
 			if (id < amount - 1) {
-				thisslide.hide();
+				thisslide.removeClass('showing');
 				id++;
 				thisslide = $($slide[id]);
-				thisslide.show();
+				thisslide.addClass('showing');
 				if (!$back.hasClass('hoverclass')) {
 					$back.addClass('hoverclass');
 				}
@@ -38,10 +39,10 @@ function showcase() {
 
 		function prevSlide() {
 			if (id > 0) {
-				thisslide.hide();
+				thisslide.removeClass('showing');
 				id--;
 				thisslide = $($slide[id]);
-				thisslide.show();
+				thisslide.addClass('showing');
 				if (!$next.hasClass('hoverclass')) {
 					$next.addClass('hoverclass');
 				}
@@ -53,7 +54,7 @@ function showcase() {
 
 		function thumbs() {
 			$slides.add($back).add($next).add($thumbsbutton).hide();
-			thisslide.hide();
+			thisslide.removeClass('showing');
 			$thumbnails.show();
 
 			var thumbid = new Array(amount);
@@ -100,7 +101,7 @@ function showcase() {
 							$slides.add($back).add($next).add($thumbsbutton).show();
 							id = $this.index();
 							thisslide = $($slide[id]);
-							thisslide.show();
+							thisslide.addClass('showing');
 							if (thisslide.index() == amount-1) {
 								$next.removeClass('hoverclass');
 								if (!$back.hasClass('hoverclass')) {
@@ -121,15 +122,13 @@ function showcase() {
 		}
 
 		function imgAlign() {
-			$this.imagesLoaded(function() {
-				$('img').each(function() {
-					console.log($(this).width());
-					if ($(this).width() > $slide.width()) {
-						var i = $(this).parent().index();
-						$($slide[i]).addClass('h-align');
-						$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
-					}
-				})
+			var $img = $('.slides-item img');
+			$img.each(function() {
+				if (this.width > $slide.width()) {
+					var i = $(this).parent().index();
+					$($slide[i]).addClass('h-align');
+					$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
+				}
 			});
 		}
 	});

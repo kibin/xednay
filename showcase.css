@@ -61,6 +61,7 @@ body, ul, li, table, tr, td, h2 {
 .thumbnails {
 	width: 760px;
 	height: 560px;
+	border: solid 1px #f0f0f0;
 	margin: 20px auto;
 }
 
@@ -85,6 +86,14 @@ body, ul, li, table, tr, td, h2 {
 
 .preview {
 	padding: 8px;
+}
+
+.slides-item {
+	display: none;
+}
+
+.slides-item.showing {
+	display: block;
 }
 
 .slides-item {
