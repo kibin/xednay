@@ -88,10 +88,6 @@ body, ul, li, table, tr, td, h2 {
 	padding: 8px;
 }
 
-.slides-item {
-	display: none;
-}
-
 .slides-item.showing {
 	display: block;
 }

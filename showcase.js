@@ -1,4 +1,4 @@
-$(window).on('load', showcase); 
+$(showcase); 
 
 function showcase() {
 	var show = $('.showcase');
@@ -11,16 +11,17 @@ function showcase() {
 			$back = $('.backbutton', $this),
 			$thumbsbutton = $('.thumbsbutton', $this),
 			$thumbnails = $('.thumbnails', $this),
+			$style = $('<style>.slides-item {display: none;}</style>'),
 
 			id = 0,
 			thisslide = $($slide[id]),
 			amount = $slide.length;
 
+		imgAlign();
 		thisslide.addClass('showing');
 		$next.leftClick(nextSlide);
 		$back.leftClick(prevSlide);
 		$thumbsbutton.leftClick(thumbs);
-		imgAlign();
 
 		function nextSlide() {
 			if (id < amount - 1) {
@@ -122,13 +123,20 @@ function showcase() {
 		}
 
 		function imgAlign() {
-			var $img = $('.slides-item img');
-			$img.each(function() {
-				if (this.width > $slide.width()) {
-					var i = $(this).parent().index();
-					$($slide[i]).addClass('h-align');
-					$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
-				}
+			$this.imagesLoaded(function() {
+				var $img = $('.slides-item img');
+
+				$img.each(function() {
+					var $this = $(this);
+
+					console.log($this.width())
+					if ($this.width() > $slide.width()) {
+						var i = $this.parent().index();
+						$($slide[i]).addClass('h-align');
+						$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
+					}
+				});
+				$style.appendTo('head');
 			});
 		}
 	});
