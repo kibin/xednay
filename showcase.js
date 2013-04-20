@@ -129,7 +129,6 @@ function showcase() {
 				$img.each(function() {
 					var $this = $(this);
 
-					console.log($this.width())
 					if ($this.width() > $slide.width()) {
 						var i = $this.parent().index();
 						$($slide[i]).addClass('h-align');
