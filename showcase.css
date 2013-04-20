@@ -46,8 +46,8 @@ body, ul, li, table, tr, td, h2 {
 	height: 40px;
 	background: url(thumbs.gif);
 	position: absolute;
-	top: 40px;
-	right: 40px;
+	top: 27px;
+	right: 27px;
 	cursor: pointer;
 	opacity: 0.5;
 }
@@ -61,7 +61,6 @@ body, ul, li, table, tr, td, h2 {
 .thumbnails {
 	width: 760px;
 	height: 560px;
-	border: solid 1px #fcfcfc;
 	margin: 20px auto;
 }
 
