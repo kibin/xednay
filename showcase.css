@@ -47,8 +47,7 @@ body, ul, li, table, tr, td, h2 {
 	background: url(thumbs.gif);
 	position: absolute;
 	top: 30px;
-	left: 50%;
-	margin-left: -30px;
+	right: 30px;
 	cursor: pointer;
 	opacity: 0.3;
 }
@@ -64,11 +63,15 @@ body, ul, li, table, tr, td, h2 {
 	height: 560px;
 	border: solid 1px #f0f0f0;
 	margin: 20px auto;
-	overflow: auto;
+}
+
+.slides {
+	overflow: hidden;
 }
 
 .thumbnails {
 	display: none;
+	overflow: auto;
 }
 
 .thumbnails-item {
