@@ -72,13 +72,16 @@ function showcase() {
 						$curslide = $($slide[i]),
 						textfinder = function(elt) {
 							if (elt.find(':first-child').html() === undefined) {
-								if (elt.is('img')) {
-									elt.clone().appendTo($thumbs);
-								} else {
+								if (!$(elt[0]).is('img')) {
 									var text = elt.parent().text();
 									
+									if (text.length > 60) {
+										text = text.slice(0, 60) + '...';
+									}
 									text = '<h2 class="preview">' + text + '</h2>'
 									$thumbs.append(text);
+								} else {
+									elt.clone().appendTo($thumbs);
 								}
 							} else {
 								textfinder(elt.find(':first-child'));
