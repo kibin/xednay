@@ -68,21 +68,23 @@ function showcase() {
 			if (!$thumbnails.html().length) {
 				for (var i = 0; i < amount; i++) {
 					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
-						$thumbnails.append($thumbs);
-						if ($('img', $slide[i]).length) {
-							$('img', $slide[i]).clone().appendTo($thumbs);
-						} else {
-							function textfinder(a) {
-								if (a.find(':first-child').html() === undefined) {
-									var text = a.parent().text();
+						$thumbnails.append($thumbs),
+						$curslide = $($slide[i]),
+						textfinder = function(elt) {
+							if (elt.find(':first-child').html() === undefined) {
+								if (elt.is('img')) {
+									elt.clone().appendTo($thumbs);
+								} else {
+									var text = elt.parent().text();
+									
 									text = '<h2 class="preview">' + text + '</h2>'
 									$thumbs.append(text);
-								} else {
-									textfinder(a.find(':first-child'));
 								}
+							} else {
+								textfinder(elt.find(':first-child'));
 							}
-							textfinder($($slide[i]));
 						}
+						textfinder($curslide);
 
 					$thumbs.each(function() {
 						var $this = $(this),
@@ -124,7 +126,7 @@ function showcase() {
 
 		function imgAlign() {
 			$this.imagesLoaded(function() {
-				var $img = $('.slides-item img');
+				var $img = $('.slides-item img', $this);
 
 				$img.each(function() {
 					var $this = $(this);
