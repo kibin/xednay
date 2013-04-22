@@ -61,7 +61,7 @@ function showcase() {
 			var thumbid = new Array(amount);
 			for (var z = 0; z < amount; z++) {
 				if ($($slide[z]).hasClass('h-align')) {
-					thumbid.splice(z, 1, $($slide[z]).index());
+					thumbid.splice(z, 1, true);
 				}
 			}
 
