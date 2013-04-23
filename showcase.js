@@ -68,12 +68,8 @@ function showcase() {
 
 			if (!$thumbnails.html().length) {
 				for (var i = 0; i < amount; i++) {
-					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
-					
-					$thumbnails.append($thumbs);
-					
-					var $curslide = $slide.eq(i),
-						
+					var $thumbs = $('<li class="thumbnails-item">'+'</li>'),
+						$curslide = $slide.eq(i),
 						textfinder = function(elt) {
 							if (elt.find(':first-child').html() === undefined) {
 								if ($(elt[0]).is('img')) {
@@ -93,6 +89,7 @@ function showcase() {
 						};
 					
 					textfinder($curslide);
+					$thumbnails.append($thumbs);
 
 					$thumbs.each(function() {
 						var $this = $(this),
@@ -104,7 +101,7 @@ function showcase() {
 								imgheight = img.height(),
 								thisheight = $this.height();
 
-							img.css({'margin-top': (thisheight - imgheight)/2})
+							img.css({'margin-top': (thisheight - imgheight)/2});
 						}
 
 						$this.on('click', function() {
@@ -145,6 +142,7 @@ function showcase() {
 						$slide.eq(i).css({'margin-top': ($slide.height() - this.height)/2});
 					}
 				});
+				
 				$style.appendTo('head');
 			});
 		}
