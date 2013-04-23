@@ -11,7 +11,7 @@ function showcase() {
 			$back = $('.backbutton', $this),
 			$thumbsbutton = $('.thumbsbutton', $this),
 			$thumbnails = $('.thumbnails', $this),
-			$style = $('<style>.slides-item {display: none;}</style>'),
+			$style = $('<style> .slides-item { display: none; } </style>'),
 			$navgroup = $('.slides, .nextbutton, .backbutton, .thumbsbutton', $this),
 
 			id = 0,
@@ -69,8 +69,11 @@ function showcase() {
 			if (!$thumbnails.html().length) {
 				for (var i = 0; i < amount; i++) {
 					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
-						$thumbnails.append($thumbs),
-						$curslide = $slide.eq(i),
+					
+					$thumbnails.append($thumbs);
+					
+					var $curslide = $slide.eq(i),
+						
 						textfinder = function(elt) {
 							if (elt.find(':first-child').html() === undefined) {
 								if ($(elt[0]).is('img')) {
@@ -87,7 +90,7 @@ function showcase() {
 							} else {
 								textfinder(elt.find(':first-child'));
 							}
-						}
+						};
 					
 					textfinder($curslide);
 
