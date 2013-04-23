@@ -15,7 +15,7 @@ function showcase() {
 			$navgroup = $('.slides, .nextbutton, .backbutton, .thumbsbutton', $this),
 
 			id = 0,
-			thisslide = $($slide[id]),
+			thisslide = $slide.eq(id),
 			amount = $slide.length;
 
 		imgAlign();
@@ -107,7 +107,7 @@ function showcase() {
 							$thumbnails.hide();
 							$navgroup.show();
 							id = $this.index();
-							thisslide = $($slide[id]);
+							thisslide = $slide.eq(id);
 							thisslide.addClass('showing');
 							if (thisslide.index() == amount-1) {
 								$next.removeClass('hoverclass');
