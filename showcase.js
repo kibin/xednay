@@ -12,6 +12,7 @@ function showcase() {
 			$thumbsbutton = $('.thumbsbutton', $this),
 			$thumbnails = $('.thumbnails', $this),
 			$style = $('<style>.slides-item {display: none;}</style>'),
+			$navgroup = $('.slides, .nextbutton, .backbutton, .thumbsbutton', $this),
 
 			id = 0,
 			thisslide = $($slide[id]),
@@ -54,7 +55,7 @@ function showcase() {
 		}
 
 		function thumbs() {
-			$slides.add($back).add($next).add($thumbsbutton).hide();
+			$navgroup.hide();
 			thisslide.removeClass('showing');
 			$thumbnails.show();
 
@@ -104,7 +105,7 @@ function showcase() {
 
 						$this.on('click', function() {
 							$thumbnails.hide();
-							$slides.add($back).add($next).add($thumbsbutton).show();
+							$navgroup.show();
 							id = $this.index();
 							thisslide = $($slide[id]);
 							thisslide.addClass('showing');
