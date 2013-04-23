@@ -73,7 +73,9 @@ function showcase() {
 						$curslide = $slide.eq(i),
 						textfinder = function(elt) {
 							if (elt.find(':first-child').html() === undefined) {
-								if (!$(elt[0]).is('img')) {
+								if ($(elt[0]).is('img')) {
+									elt.clone().appendTo($thumbs);
+								} else {
 									var text = elt.parent().text();
 									
 									if (text.length > 60) {
@@ -81,14 +83,13 @@ function showcase() {
 									}
 									text = '<h2 class="preview">' + text + '</h2>'
 									$thumbs.append(text);
-								} else {
-									elt.clone().appendTo($thumbs);
 								}
 							} else {
 								textfinder(elt.find(':first-child'));
 							}
 						}
-						textfinder($curslide);
+					
+					textfinder($curslide);
 
 					$thumbs.each(function() {
 						var $this = $(this),
