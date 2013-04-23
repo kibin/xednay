@@ -28,7 +28,7 @@ function showcase() {
 			if (id < amount - 1) {
 				thisslide.removeClass('showing');
 				id++;
-				thisslide = $($slide[id]);
+				thisslide = $slide.eq(id);
 				thisslide.addClass('showing');
 				if (!$back.hasClass('hoverclass')) {
 					$back.addClass('hoverclass');
@@ -43,7 +43,7 @@ function showcase() {
 			if (id > 0) {
 				thisslide.removeClass('showing');
 				id--;
-				thisslide = $($slide[id]);
+				thisslide = $slide.eq(id);
 				thisslide.addClass('showing');
 				if (!$next.hasClass('hoverclass')) {
 					$next.addClass('hoverclass');
@@ -61,7 +61,7 @@ function showcase() {
 
 			var thumbid = new Array(amount);
 			for (var z = 0; z < amount; z++) {
-				if ($($slide[z]).hasClass('h-align')) {
+				if ($slide.eq(z).hasClass('h-align')) {
 					thumbid.splice(z, 1, true);
 				}
 			}
@@ -70,7 +70,7 @@ function showcase() {
 				for (var i = 0; i < amount; i++) {
 					var $thumbs = $('<li class="thumbnails-item">'+'</li>');
 						$thumbnails.append($thumbs),
-						$curslide = $($slide[i]),
+						$curslide = $slide.eq(i),
 						textfinder = function(elt) {
 							if (elt.find(':first-child').html() === undefined) {
 								if (!$(elt[0]).is('img')) {
@@ -137,8 +137,8 @@ function showcase() {
 
 					if ($this.width() > $slide.width()) {
 						var i = $this.parent().index();
-						$($slide[i]).addClass('h-align');
-						$($slide[i]).css({'margin-top': ($slide.height() - this.height)/2});
+						$slide.eq(i).addClass('h-align');
+						$slide.eq(i).css({'margin-top': ($slide.height() - this.height)/2});
 					}
 				});
 				$style.appendTo('head');
