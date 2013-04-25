@@ -6,5 +6,6 @@
 				else console.log('left click');
 			} else console.log('middle/right click');
 		});
-	}
-} (jQuery))
+        return this;
+	};
+} (jQuery));
