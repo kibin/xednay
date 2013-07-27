@@ -7,5 +7,5 @@
 			} else console.log('middle/right click');
 		});
         return this;
-	};
-} (jQuery));
+	}
+} (jQuery))
